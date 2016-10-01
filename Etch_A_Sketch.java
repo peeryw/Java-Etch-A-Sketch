@@ -26,6 +26,7 @@ public class Etch_A_Sketch implements MouseListener, MouseMotionListener, Action
         window.setResizable(false);
         window.setSize(height,width);
         window.setVisible(true);
+        window.setLocationRelativeTo(null);
     }
 
     public void mouseClicked(MouseEvent evt) {
@@ -63,18 +64,19 @@ public class Etch_A_Sketch implements MouseListener, MouseMotionListener, Action
     	
         newX = evt.getX();
         newY = evt.getY();
+        oldX = evt.getX();
+        oldY = evt.getY();
  
         if (oldX ==0 ) {
             oldX=newX;
             oldY=newY;
             return;
         }
-        
+        Graphics2D g2 = (Graphics2D) g;
         g = content.getGraphics();
-        g.drawLine( oldX,oldY, newX, newY );
-        g.getColor();
-        oldX = newX;
-        oldY = newY;
+        g2.setStroke(new BasicStroke(6));
+        g2.drawLine(oldX, oldY, newX, newY);
+      	
     }
     
     public void mouseMoved(MouseEvent evt) {
